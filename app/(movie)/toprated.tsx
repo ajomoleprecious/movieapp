@@ -8,7 +8,7 @@ import { ChevronLeftIcon, MagnifyingGlassIcon } from "react-native-heroicons/sol
 
 const { width, height } = Dimensions.get("window");
 const ios = Platform.OS === "ios";
-const verticalMargin = ios ? "" : "my-3";
+const verticalMargin = ios ? "" : "mt-8";
 
 const TopRatedMovies = () => {
     const [loading, setLoading] = useState(true);

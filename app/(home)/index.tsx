@@ -12,6 +12,7 @@ import { getTopRatedMovies, getTrendingMovies, getUpcomingMovies, getTrendingTvS
 import { Movie, Serie } from "@/types";
 import TrendingTvSeries from "@/components/TrendingTvSeries";
 import SerieList from "@/components/SerieList";
+import React from "react";
 
 const ios = Platform.OS === "ios";
 type Selection = "movies" | "tv";

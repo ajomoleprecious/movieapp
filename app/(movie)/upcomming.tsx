@@ -8,7 +8,7 @@ import { ChevronLeftIcon, MagnifyingGlassIcon } from "react-native-heroicons/sol
 
 const { width, height } = Dimensions.get("window");
 const ios = Platform.OS === "ios";
-const verticalMargin = ios ? "" : "my-3";
+const verticalMargin = ios ? "" : "mt-8";
 
 const UpcommingMovies = () => {
     const [loading, setLoading] = useState(true);
@@ -66,7 +66,7 @@ const UpcommingMovies = () => {
             {loading ? (
                 <LoadingSpinner />
             ) : (
-                <SafeAreaView style={{ marginTop: 100 }}>
+                <SafeAreaView style={{ marginTop: 100 }} className={verticalMargin}>
                     <FlatList
                         showsVerticalScrollIndicator={false}
                         data={upcommingMovies}
