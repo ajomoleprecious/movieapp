@@ -11,7 +11,7 @@ interface ReviewCardProps {
 
 const ReviewCard = ({ name, avatar, rating, content }: ReviewCardProps) => {
     return (
-        <View className="bg-neutral-700 p-4 rounded-lg max-w-xs">
+        <View className="bg-neutral-700 p-4 rounded-xl max-w-xs">
             <View className="flex-row items-center justify-between">
                 <View className="flex-row items-center">
                     <Image
