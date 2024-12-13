@@ -10,6 +10,7 @@ import { Actor } from '@/types';
 import { useRouter } from 'expo-router';
 import { fallbackMovieImage, image500 } from '@/api/db';
 import NoResults from '@/components/NoResults';
+import { scheduleNotification } from '@/util/usePushNotifications';
 
 const ios = Platform.OS === "ios";
 const { width, height } = Dimensions.get('window');
@@ -53,6 +54,7 @@ const FavoriteActorsScreen = () => {
     const removeFavoriteActor = async (actorId: number) => {
         try {
             await AsyncStorage.removeItem(`@favoriteActors:${actorId}`);
+            await scheduleNotification("Favorite Actors", "Actor has been removed from your favorite list!");
             setFavoriteActors(previousFavoriteActors => previousFavoriteActors.filter(actor => actor.id !== actorId));
         } catch (error) {
             console.error("Error deleting actor:", error);
@@ -65,6 +67,7 @@ const FavoriteActorsScreen = () => {
             const favoriteActorsKeys = keys.filter((key) => key.startsWith("@favoriteActors:"));
 
             await AsyncStorage.multiRemove(favoriteActorsKeys);
+            await scheduleNotification("Favorite Actors", "All favorite actors have been removed from your favorite list!");
             setFavoriteActors([]);
         } catch (error) {
             console.error("Error deleting actors:", error);

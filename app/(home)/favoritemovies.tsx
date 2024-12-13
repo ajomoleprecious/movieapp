@@ -10,6 +10,7 @@ import { Movie } from '@/types';
 import { useRouter } from 'expo-router';
 import { fallbackMovieImage, image500 } from '@/api/db';
 import NoResults from '@/components/NoResults';
+import { scheduleNotification } from '@/util/usePushNotifications';
 
 const ios = Platform.OS === "ios";
 const { width, height } = Dimensions.get('window');
@@ -53,6 +54,7 @@ const FavoriteMoviesScreen = () => {
     const removeFavoriteMovie = async (movieId: number) => {
         try {
             await AsyncStorage.removeItem(`@favoriteMovies:${movieId}`);
+            await scheduleNotification("Favorite Movies", "Movie has been removed from your favorite list!");
             setFavoriteMovies(prevMovies => prevMovies.filter(movie => movie.id !== movieId));
         } catch (error) {
             console.error("Error deleting movie:", error);
@@ -65,6 +67,7 @@ const FavoriteMoviesScreen = () => {
             const favoriteMovieKeys = keys.filter((key) => key.startsWith("@favoriteMovies:"));
 
             await AsyncStorage.multiRemove(favoriteMovieKeys);
+            await scheduleNotification("Favorite Movies", "All movies have been removed from your favorite list!");
             setFavoriteMovies([]);
         } catch (error) {
             console.error("Error deleting movies:", error);

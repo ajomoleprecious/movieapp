@@ -16,6 +16,7 @@ import ReviewCard from "@/components/ReviewCard";
 import SerieList from "@/components/SerieList";
 import CollapsibleText from "@/components/CollapsibleText";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { scheduleNotification } from "@/util/usePushNotifications";
 
 
 
@@ -108,6 +109,7 @@ const SerieScreen = () => {
             setIsFavorite(false);
         } else {
             await AsyncStorage.setItem(`@favoriteTvSeries:${tvId}`, JSON.stringify(serieItem));
+            await scheduleNotification("Favorite Tv Series", `${serieItem?.name} has been added to your favorites tv series list!`);
             setIsFavorite(true);
         }
     }
@@ -142,6 +144,7 @@ const SerieScreen = () => {
                 <LoadingSpinner />
             ) :
                 <ScrollView
+                    showsVerticalScrollIndicator={false}
                     contentContainerStyle={{ paddingBottom: 20 }}
                 >
                     <View className="w-full">
@@ -201,7 +204,7 @@ const SerieScreen = () => {
                             <Text className="text-white font-bold text-xl">Overview</Text>
                             <CollapsibleText text={serieItem?.seasons[0].overview ? serieItem.seasons[0].overview : serieItem?.overview === "" ? "No overview available" : serieItem?.overview} />
                         </View>
-                        <Text className="text-neutral-400 mx-4 tracking-wider mt-3 text-lg">{}</Text>
+                        <Text className="text-neutral-400 mx-4 tracking-wider mt-3 text-lg">{ }</Text>
                     </View>
                     {serieItem?.seasons &&
                         <>

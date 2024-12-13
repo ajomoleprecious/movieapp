@@ -18,7 +18,8 @@ import Carousel from 'react-native-snap-carousel';
 import ReviewCard from "@/components/ReviewCard";
 import CollapsibleText from "@/components/CollapsibleText";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { usePushNotifications } from "@/util/usePushNotifications";
+import { scheduleNotification } from "@/util/usePushNotifications";
+import * as Notifications from 'expo-notifications';
 
 
 
@@ -40,13 +41,16 @@ const MovieScreen = () => {
     const [movieImages, setMovieImages] = useState<string[]>([]);
     const [collection, setCollection] = useState<Movie[]>([]);
     const [reviews, setReviews] = useState<Review[]>([]);
-    const {expoPushToken, notification} = usePushNotifications();
-    const data = JSON.stringify(notification, undefined, 2);
+
+    useEffect(() => {
+        const subscription = Notifications.addNotificationReceivedListener(notification => {
+            console.log('Notification received:', notification);
+        });
+        return () => subscription.remove();
+    }, []);
 
 
     useEffect(() => {
-        console.log("expoPushToken", expoPushToken);
-        console.log("notification", data);
         getMovieDetails(movieId).then((data) => {
             setMovieItem(data);
             setCredit(data.credits);
@@ -86,6 +90,7 @@ const MovieScreen = () => {
             setIsFavorite(false);
         } else {
             await AsyncStorage.setItem(`@favoriteMovies:${movieItem?.id}`, JSON.stringify(movieItem));
+            await scheduleNotification("Movie Added", `You have added ${movieItem?.title} to your favorites movies!`);
             setIsFavorite(true);
         }        
     }

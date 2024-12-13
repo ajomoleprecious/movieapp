@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { View, StyleSheet, Image, Animated, Easing } from "react-native";
 import { Audio } from 'expo-av';
 import { useRouter } from "expo-router";
+import { registerForPushNotificationsAsync } from "@/util/usePushNotifications";
 
 const IntroScreen = () => {
     const router = useRouter();
@@ -19,6 +20,12 @@ const IntroScreen = () => {
             height: 180,
         },
     });
+
+    // registerForPushNotificationsAsync();
+    useEffect(() => {
+        registerForPushNotificationsAsync();
+    }, []);
+
 
     useEffect(() => {
         const playSound = async () => {
@@ -89,3 +96,5 @@ const IntroScreen = () => {
 };
 
 export default IntroScreen;
+
+

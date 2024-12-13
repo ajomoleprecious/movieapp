@@ -11,6 +11,7 @@ import { fallbackpersonImage, getPersonDetails, getPersonMovieCredits, getPerson
 import CollapsibleText from "@/components/CollapsibleText";
 import SerieList from "@/components/SerieList";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { scheduleNotification } from "@/util/usePushNotifications";
 
 
 
@@ -63,6 +64,7 @@ const PersonScreen = () => {
             setIsFavoriteActor(false);
         } else {
             await AsyncStorage.setItem(`@favoriteActors:${castId}`, JSON.stringify(actor));
+            await scheduleNotification("Favorite Actor", `${actor?.name} has been added to your favorites actors list!`);
             setIsFavoriteActor(true);
         }
     }

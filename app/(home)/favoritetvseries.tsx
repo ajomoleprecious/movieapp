@@ -10,6 +10,7 @@ import { Serie } from '@/types';
 import { useRouter } from 'expo-router';
 import { fallbackMovieImage, image500 } from '@/api/db';
 import NoResults from '@/components/NoResults';
+import { scheduleNotification } from '@/util/usePushNotifications';
 
 
 const ios = Platform.OS === "ios";
@@ -54,6 +55,7 @@ const FavoriteTvSeriesScreen = () => {
     const removeFavoriteTvSerie = async (serieId: number) => {
         try {
             await AsyncStorage.removeItem(`@favoriteTvSeries:${serieId}`);
+            await scheduleNotification("Favorite Tv Series", "Tv Series has been removed from your favorite list!");
             setFavoriteTvSeries(previousFavoriteTvSeries => previousFavoriteTvSeries.filter(serie => serie.id !== serieId));
         } catch (error) {
             console.error("Error deleting serie:", error);
@@ -66,6 +68,7 @@ const FavoriteTvSeriesScreen = () => {
             const favoriteTvSeriesKeys = keys.filter((key) => key.startsWith("@favoriteTvSeries:"));
 
             await AsyncStorage.multiRemove(favoriteTvSeriesKeys);
+            await scheduleNotification("Favorite Tv Series", "All tv series have been removed from your favorite list!");
             setFavoriteTvSeries([]);
         } catch (error) {
             console.error("Error deleting all series:", error);
