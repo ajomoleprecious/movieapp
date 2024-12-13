@@ -9,7 +9,7 @@ interface NoResultsProps {
 const NoResults = ({ text }: NoResultsProps) => {
     return (
         <>
-            <Text className="text-white font-semibold text-xl text-center">{text || "No results found"}</Text>
+            <Text className="text-white font-semibold text-3xl text-center mb-3">{text || "No results found"}</Text>
             <View
                 style={{
                     flex: 1,
@@ -23,7 +23,7 @@ const NoResults = ({ text }: NoResultsProps) => {
                         width: width * 0.90,
                         height: height * 0.30,
                         resizeMode: "contain",
-                        backgroundColor: "darkgray",
+                        backgroundColor: "#eab308",
                         borderRadius: 24,
                     }}
                 />
