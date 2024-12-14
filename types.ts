@@ -332,3 +332,11 @@ export type Cinema = {
     latitude: number;
     longitude: number;
 }
+
+export type MovieTest = {
+    id:        number;
+    title:     string;
+    posterURL: string;
+    imdbId:    string;
+    rating:    number;
+}

@@ -1,7 +1,7 @@
 import { Drawer } from 'expo-router/drawer';
 import { Text, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { HeartIcon, HomeIcon, MapPinIcon } from 'react-native-heroicons/solid';
+import { GlobeAltIcon, HeartIcon, HomeIcon, MapPinIcon } from 'react-native-heroicons/solid';
 
 export default function HomeLayout() {
     return (
@@ -85,6 +85,19 @@ export default function HomeLayout() {
                         ),
                         headerTitle: "Cinemas",
                         drawerIcon: ({ focused }) => <MapPinIcon size={30} color={focused ? "#000" : "#fff"} />,
+                    }}
+                />
+                <Drawer.Screen
+                    name="testapi"
+                    options={{
+                        headerShown: false,
+                        drawerLabel: ({ focused }) => (
+                            <Text style={{ color: focused ? "#000" : "#fff", fontSize: 30, fontWeight: "bold" }}>
+                                Test API
+                            </Text>
+                        ),
+                        headerTitle: "Test API",
+                        drawerIcon: ({ focused }) => <GlobeAltIcon size={30} color={focused ? "#000" : "#fff"} />,
                     }}
                 />
             </Drawer>

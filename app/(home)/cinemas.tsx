@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react';
-import MapView, { Marker, Region } from 'react-native-maps';
-import { View, Text, ActivityIndicator, SafeAreaView, TouchableOpacity, Platform } from 'react-native';
+import MapView, { Marker } from 'react-native-maps';
+import { View, Text, SafeAreaView, TouchableOpacity, Platform } from 'react-native';
 import * as Location from 'expo-location';
 import LoadingSpinner from '@/components/Loading';
 import { DrawerActions } from '@react-navigation/native';
-import { Bars3CenterLeftIcon, PaperAirplaneIcon } from 'react-native-heroicons/solid';
+import { Bars3CenterLeftIcon, MapPinIcon } from 'react-native-heroicons/solid';
 import { StatusBar } from 'expo-status-bar';
 import { useNavigation } from 'expo-router';
 import * as Linking from 'expo-linking';
@@ -131,7 +131,7 @@ export default function App() {
           </Text>
 
           <TouchableOpacity onPress={recenterMap}>
-            <PaperAirplaneIcon size={30} color="white" />
+            <MapPinIcon size={30} strokeWidth={2} color="white" />
           </TouchableOpacity>
         </View>
       </SafeAreaView>
