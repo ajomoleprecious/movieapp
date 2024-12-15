@@ -30,7 +30,7 @@ const FavoriteActorsScreen = () => {
             const favoriteActorsData = await AsyncStorage.multiGet(favoriteActorsKeys);
 
             const actors = favoriteActorsData
-                .map(([key, value]) => (value ? JSON.parse(value) : null))
+                .map(([_, value]) => (value ? JSON.parse(value) : null))
                 .filter(actor => actor !== null);
 
             setFavoriteActors(actors);

@@ -31,7 +31,7 @@ const FavoriteMoviesScreen = () => {
             const favoriteMoviesData = await AsyncStorage.multiGet(favoriteMovieKeys);
 
             const movies = favoriteMoviesData
-                .map(([key, value]) => (value ? JSON.parse(value) : null))
+                .map(([_, value]) => (value ? JSON.parse(value) : null))
                 .filter(movie => movie !== null);
 
             setFavoriteMovies(movies);

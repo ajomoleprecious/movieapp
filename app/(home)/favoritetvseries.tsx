@@ -32,7 +32,7 @@ const FavoriteTvSeriesScreen = () => {
             const favoriteTvSeriesData = await AsyncStorage.multiGet(favoriteTvSeriesKeys);
 
             const tvseries = favoriteTvSeriesData
-                .map(([key, value]) => (value ? JSON.parse(value) : null))
+                .map(([_, value]) => (value ? JSON.parse(value) : null))
                 .filter(serie => serie !== null);
 
             setFavoriteTvSeries(tvseries);

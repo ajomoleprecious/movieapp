@@ -39,7 +39,13 @@ export const updateComedyMovie = async (id: number, data: MovieTest) => {
 export const deleteComedyMovie = async (id: number) => {
     try {
         const response = await axios.delete(`https://sampleapis.assimilate.be/movies/comedy/${id}`, read_config);
-        return response.data;
+        if (response.status === 204) {
+            return true;
+        }
+        if (response.status === 502) {
+            return true; // This is a workaround for the API returning 502 Bad Gateway
+        }
+        return false;
     } catch (error) {
         console.error(error);
     }
