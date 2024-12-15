@@ -1,7 +1,7 @@
 import { useRoute } from "@react-navigation/native";
 import { useRouter } from "expo-router";
 import { useEffect, useState } from "react";
-import { View, Text, ScrollView, TouchableOpacity, Dimensions, Image, TextInput } from "react-native";
+import { View, Text, ScrollView, TouchableOpacity, Dimensions, Image, TextInput, Platform } from "react-native";
 import { FilmIcon, HeartIcon, PlayIcon } from "react-native-heroicons/solid";
 import { ChevronLeftIcon } from "react-native-heroicons/solid";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -26,8 +26,8 @@ import React from "react";
 
 
 const { width, height } = Dimensions.get('window');
-// const ios = Platform.OS === "ios";
-
+const ios = Platform.OS === "ios";
+const verticalMargin = ios ? "" : "my-3";
 const MovieScreen = () => {
     const router = useRouter();
     const { movieId } = useRoute().params as { movieId: number };
@@ -110,6 +110,7 @@ const MovieScreen = () => {
                     justifyContent: 'space-between',
                     alignItems: 'center',
                 }}
+                className={verticalMargin}
             >
                 <TouchableOpacity
                     onPress={() => router.back()}

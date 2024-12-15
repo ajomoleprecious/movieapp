@@ -7,7 +7,7 @@ import { Credit, Episode, Review, Serie, SerieDetail } from "@/types";
 import { useRoute } from "@react-navigation/native";
 import { useRouter } from "expo-router";
 import { useEffect, useState } from "react";
-import { Dimensions, View, SafeAreaView, TouchableOpacity, ScrollView, Image, Text, TouchableWithoutFeedback } from "react-native";
+import { Dimensions, View, SafeAreaView, TouchableOpacity, ScrollView, Image, Text, TouchableWithoutFeedback, Platform } from "react-native";
 import { ChevronLeftIcon, HeartIcon, PlayIcon, FilmIcon } from "react-native-heroicons/solid";
 import { LinearGradient } from "expo-linear-gradient";
 import Cast from "@/components/Cast";
@@ -22,8 +22,8 @@ import React from "react";
 
 
 const { width, height } = Dimensions.get('window');
-// const ios = Platform.OS === "ios";
-
+const ios = Platform.OS === "ios";
+const verticalMargin = ios ? "" : "my-3";
 const SerieScreen = () => {
     const router = useRouter();
     const { tvId } = useRoute().params as { tvId: number };
@@ -129,6 +129,7 @@ const SerieScreen = () => {
                     justifyContent: 'space-between',
                     alignItems: 'center',
                 }}
+                className={verticalMargin}
             >
                 <TouchableOpacity
                     onPress={() => router.back()}
