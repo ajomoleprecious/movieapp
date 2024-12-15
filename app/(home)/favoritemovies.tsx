@@ -123,7 +123,7 @@ const FavoriteMoviesScreen = () => {
                                                 />
                                                 <TouchableOpacity
                                                     onPress={() => removeFavoriteMovie(movie.id)}
-                                                    className="absolute top-0 right-0 p-3"
+                                                    className="absolute top-0 right-0 p-2"
                                                     style={{ backgroundColor: "gray", borderTopRightRadius: 24, borderBottomLeftRadius: 24 }}
                                                 >
                                                     <TrashIcon size={25} color="#eab308" />

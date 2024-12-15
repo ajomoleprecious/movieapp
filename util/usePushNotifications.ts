@@ -53,14 +53,15 @@ const scheduleNotification = async (title: string, body: string, data?: any, sec
                 body: body,
                 data: { data },
             },
-            trigger: { type: Notifications.SchedulableTriggerInputTypes.TIME_INTERVAL, seconds:  seconds },
+            trigger: { type: Notifications.SchedulableTriggerInputTypes.TIME_INTERVAL, seconds: seconds },
         });
 
-        // console.log('Notification scheduled with ID:', notificationId);
+        console.log('Notification scheduled with ID:', notificationId);
     } catch (error) {
         console.error('Error scheduling notification:', error);
     }
 };
+
 
 
 export { registerForPushNotificationsAsync, scheduleNotification };

@@ -17,6 +17,7 @@ import SerieList from "@/components/SerieList";
 import CollapsibleText from "@/components/CollapsibleText";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { scheduleNotification } from "@/util/usePushNotifications";
+import React from "react";
 
 
 

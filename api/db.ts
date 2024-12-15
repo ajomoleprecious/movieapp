@@ -370,31 +370,6 @@ export const getMovieImages = async (id: number) => {
     }
 }
 
-// post a review
-
-// export const postReview = async (id: number, review: string, rating: number) => {
-//     try {
-//         const response = await axios.post(`https://api.themoviedb.org/3/movie/${id}/rating?language=en-US`, {
-//             value: rating,
-//             review: review
-//         }, read_config);
-
-//         if (response.data) {
-//             return response.data;
-//         } else {
-//             throw new Error("Invalid response structure");
-//         }
-//     } catch (error) {
-//         if (error instanceof Error) {
-//             console.error("Error posting review:", error.message);
-//         } else {
-//             console.error("Error posting review:", error);
-//         }
-//         throw error;
-//     }
-// }
-
-
 export const getCollectionDetails = async (id: number) => {
     try {
         const response = await axios.get(`https://api.themoviedb.org/3/collection/${id}?language=en-US`, read_config);
