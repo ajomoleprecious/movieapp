@@ -103,8 +103,8 @@ const UpcommingMovies = () => {
                                         }}
                                         className="text-white"
                                     >
-                                        {item.title.length > 20
-                                            ? item.title.substring(0, 20) + "..."
+                                        {item.title.length > 15
+                                            ? item.title.substring(0, 15) + "..."
                                             : item.title}
                                     </Text>
                                 </View>
