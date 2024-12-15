@@ -10,6 +10,8 @@ export default function RootLayout() {
       <Stack.Screen name="(tv)" options={{ headerShown: false }} />
       <Stack.Screen name="(actor)" options={{ headerShown: false }} />
       <Stack.Screen name="(search)" options={{ headerShown: false }} />
+      <Stack.Screen name="addtestapi" options={{ headerShown: false, presentation: "modal" }} />
+      <Stack.Screen name="[editId]" options={{ headerShown: false, presentation: "modal" }} />
       <Stack.Screen name="+not-found" />
     </Stack>
   );

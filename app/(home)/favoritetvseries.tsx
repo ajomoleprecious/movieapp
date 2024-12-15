@@ -11,6 +11,7 @@ import { useRouter } from 'expo-router';
 import { fallbackMovieImage, image500 } from '@/api/db';
 import NoResults from '@/components/NoResults';
 import { scheduleNotification } from '@/util/usePushNotifications';
+import React from 'react';
 
 
 const ios = Platform.OS === "ios";
@@ -47,10 +48,10 @@ const FavoriteTvSeriesScreen = () => {
         fetchFavoriteTvSeries();
     }, []);
 
-    const onRefresh = () => {
+    const onRefresh = React.useCallback(() => {
         setRefreshing(true);
         fetchFavoriteTvSeries();
-    };
+    }, []);
 
     const removeFavoriteTvSerie = async (serieId: number) => {
         try {

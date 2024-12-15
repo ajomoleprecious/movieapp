@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, Platform, TouchableWithoutFeedback, Image
 import { Bars3CenterLeftIcon, TrashIcon } from "react-native-heroicons/solid";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import LoadingSpinner from '@/components/Loading';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Actor } from '@/types';
@@ -46,10 +46,10 @@ const FavoriteActorsScreen = () => {
         fetchFavoriteActors();
     }, []);
 
-    const onRefresh = () => {
+    const onRefresh = React.useCallback(() => {
         setRefreshing(true);
         fetchFavoriteActors();
-    };
+    }, []);
 
     const removeFavoriteActor = async (actorId: number) => {
         try {

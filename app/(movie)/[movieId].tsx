@@ -20,6 +20,7 @@ import CollapsibleText from "@/components/CollapsibleText";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { scheduleNotification } from "@/util/usePushNotifications";
 import * as Notifications from 'expo-notifications';
+import React from "react";
 
 
 

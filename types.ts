@@ -334,7 +334,7 @@ export type Cinema = {
 }
 
 export type MovieTest = {
-    id:        number;
+    id?:        number;
     title:     string;
     posterURL: string;
     imdbId:    string;
